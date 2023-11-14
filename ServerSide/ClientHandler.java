@@ -14,7 +14,7 @@ class ClientHandler implements Runnable, Observer {
 
     private Server server;
     private Socket clientSocket;
-    private BufferedReader fromClient;
+    private BufferedReader fromClient   ;
     private PrintWriter toClient;
 
     protected ClientHandler(Server server, Socket clientSocket) {
@@ -29,7 +29,6 @@ class ClientHandler implements Runnable, Observer {
     }
 
     protected void sendToClient(String string) {
-        System.out.println("Sending to client: " + string);
         toClient.println(string);
         toClient.flush();
     }

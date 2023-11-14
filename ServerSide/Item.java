@@ -13,7 +13,7 @@ public class Item implements Serializable {
     private double soldCost;
     private String curHighestBidder;
     private String description;
-    List<Pair<Double,String>> bidHistory;
+    List<Bid> itemBidHistory;
     private boolean sold;
 
 
@@ -23,12 +23,12 @@ public class Item implements Serializable {
         this.curHighestBidder = "";
         this.desiredCost = desiredCost;
         this.description = description;
-        bidHistory = new ArrayList<>();
+        itemBidHistory = new ArrayList<>();
     }
 
     public double bidOnItem(double bid, String bidder){
         if(bid>curCost){
-            bidHistory.add(new Pair(bid,bidder));
+            itemBidHistory.add(new Bid(bidder,bid));
             curCost = bid;
             this.curHighestBidder = bidder;
             if(bid>desiredCost){
