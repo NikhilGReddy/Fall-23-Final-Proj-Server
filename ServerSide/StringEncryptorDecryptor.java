@@ -12,7 +12,7 @@ public class StringEncryptorDecryptor {
             // Convert the plain text string to a byte array
             byte[] plainTextBytes = plainText.getBytes("UTF-8");
 
-            // Create a secret key object from the secret key string
+            // Create a secret key   object from the secret key string
             SecretKey key = new SecretKeySpec(SECRET_KEY.getBytes("UTF-8"), "AES");
 
             // Create a Cipher instance for encryption
