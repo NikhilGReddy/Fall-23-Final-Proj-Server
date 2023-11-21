@@ -16,5 +16,14 @@ public class Bid {
         }
     }
 
+    public String toString(){
+        try {
+            return "Customer : " + customer.getCustomerName() + " Item: " + item.getItemName() + " Amount: " + bidAmount;
+        }catch (Exception e ){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

@@ -37,4 +37,8 @@ public class Item implements Serializable {
         this.timerDuration = timerDuration;
     }
 
+    public String getItemName(){
+        return this.itemName;
+    }
+
 }
