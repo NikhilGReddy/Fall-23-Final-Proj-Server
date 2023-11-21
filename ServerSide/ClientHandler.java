@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.Observer;
 import java.util.Observable;
 
@@ -39,9 +40,9 @@ class ClientHandler implements Runnable, Observer {
         try {
             while ((input = fromClient.readLine()) != null) {
                 System.out.println("From client: " + input);
-                server.processRequest(input);
+                server.processRequest(input, clientSocket);
             }
-        } catch (IOException e) {
+        } catch (Exception e ) {
             e.printStackTrace();
         }
     }

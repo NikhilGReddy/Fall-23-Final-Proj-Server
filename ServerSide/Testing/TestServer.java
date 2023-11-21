@@ -1,2 +1,4 @@
-package ServerSide.Testing;public class TestServer {
+package ServerSide.Testing;
+
+public class TestServer {
 }

@@ -1,47 +1,40 @@
 package ServerSide;
-import javafx.util.Pair;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import java.io.Serializable;
-import java.util.*;
+import java.net.URL;
+
 public class Item implements Serializable {
-
-
-    private double currentCost;
-    private double startCost;
-    private double curCost;
-    private double desiredCost;
-    private double soldCost;
-    private String curHighestBidder;
+    private String itemID;
+    private String itemName;
     private String description;
-    List<Bid> itemBidHistory;
-    private boolean sold;
+    private URL imageRef;
+    private double startPrice;
+    private double curPrice;    //min acceptable price is this +0.01
+    private double minPrice;
+    private double buyNowPrice;
+
+    private Timer timer;
+    private boolean sold = false;
+    private int timerDuration;
 
 
-    public Item(double startCost, double desiredCost, String description){
-        this.startCost = startCost;
-        this.curCost = startCost;
-        this.curHighestBidder = "";
-        this.desiredCost = desiredCost;
-        this.description = description;
-        itemBidHistory = new ArrayList<>();
-    }
-
-    public double bidOnItem(double bid, String bidder){
-        if(bid>curCost){
-            itemBidHistory.add(new Bid(bidder,bid));
-            curCost = bid;
-            this.curHighestBidder = bidder;
-            if(bid>desiredCost){
-                soldCost = bid;
-                sell();
-            }
-            return bid;
-        } else {
-            return -0.1;    //Return this if bid was lower than current bid max
+    private TimerTask timeRanOut = new TimerTask(){
+        @Override
+                public void run(){
+                    sold = true;
         }
+    };
+
+    public Item(String itemID, String itemName, String description, URL imageRef, double startPrice, double buyNowPrice, int timerDuration){
+        this.itemID= itemID;
+        this.itemName = itemName;
+        this.description = description;
+        this.imageRef = imageRef;
+        this.startPrice = startPrice;
+        this.minPrice = startPrice +0.01;
+        this.buyNowPrice = buyNowPrice;
+        this.timerDuration = timerDuration;
     }
 
-    public void sell(){
-        sold = true;
-    }
 }

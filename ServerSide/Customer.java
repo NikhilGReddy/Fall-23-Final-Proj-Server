@@ -1,2 +1,4 @@
-package ServerSide;public class Customer {
+package ServerSide;
+
+public class Customer {
 }

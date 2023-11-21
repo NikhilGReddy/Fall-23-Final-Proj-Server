@@ -1,2 +1,4 @@
-package ServerSide;public class BidLists {
+package ServerSide;
+
+public class BidLists {
 }

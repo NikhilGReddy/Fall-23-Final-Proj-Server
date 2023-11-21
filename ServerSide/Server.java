@@ -1,16 +1,28 @@
 package ServerSide;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 
 import com.google.gson.Gson;
 public class Server extends Observable {
+
+    public static Map<String,String> userNamePassMap;
+
     public static void main(String[] args) {
+        System.out.println("This is server is built on openjdk-21.0.1");
         new Server().runServer();
+
     }
 
     private void runServer() {
+        userNamePassMap = new HashMap<>();
+        userNamePassMap.put("Nikhil", "password");
         try {
             setUpNetworking();
         } catch (Exception e) {
@@ -34,15 +46,20 @@ public class Server extends Observable {
         }
     }
 
-    protected void processRequest(String input) {
+    protected void processRequest(String input, Socket client) throws IOException {
+        PrintWriter toClient = new PrintWriter(client.getOutputStream());
         String output = "Error";
         Gson gson = new Gson();
         Message message = gson.fromJson(input, Message.class);
+        Message out = new Message("whoops");
         try {
+
             String temp = "";
             switch (message.type) {
-                case "upper":
-                    temp = message.input.toUpperCase();
+                case "login":
+                    System.out.println("Login attempt read correctly: " + message.name + message.password);
+                    Message message1 = new Message("loggedIn", message.name, message.password);
+                    toClient.write(gson.toJson(message1));
                     break;
                 case "lower":
                     temp = message.input.toLowerCase();
