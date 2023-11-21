@@ -1,5 +1,6 @@
 package ServerSide;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
@@ -21,9 +22,11 @@ public class Server extends Observable {
     }
 
     private void runServer() {
-        userNamePassMap = new HashMap<>();
-        userNamePassMap.put("Nikhil", "password");
+
         try {
+            BidLists bidLists = new BidLists();
+            bidLists.readJson();
+            bidLists.addBid(new Bid(bidLists.customers[0],bidLists.items[0],15.00));
             setUpNetworking();
         } catch (Exception e) {
             e.printStackTrace();

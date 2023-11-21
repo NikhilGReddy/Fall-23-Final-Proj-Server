@@ -14,17 +14,17 @@ public class Item implements Serializable {
     private double minPrice;
     private double buyNowPrice;
 
-    private Timer timer;
+    //private Timer timer;
     private boolean sold = false;
     private int timerDuration;
 
 
-    private TimerTask timeRanOut = new TimerTask(){
+    /*private TimerTask timeRanOut = new TimerTask(){
         @Override
                 public void run(){
                     sold = true;
         }
-    };
+    }; */
 
     public Item(String itemID, String itemName, String description, URL imageRef, double startPrice, double buyNowPrice, int timerDuration){
         this.itemID= itemID;
