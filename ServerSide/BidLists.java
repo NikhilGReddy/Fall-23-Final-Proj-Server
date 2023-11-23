@@ -16,7 +16,7 @@ public class BidLists {
     Gson gson = new Gson();
 
     Item[] items;
-    Customer[] customers;
+    static Customer[] customers;
     public void readJson(){
         try {
            items = gson.fromJson(new FileReader("ServerSide/DataBase/item.json"), Item[].class);
@@ -65,6 +65,14 @@ public class BidLists {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static boolean checkUserLogin(String name, String password){
+        String decryptedPassword = StringEncryptorDecryptor.decrypt(password);
+        for(Customer c : customers){
+            if(c.getCustomerName().equals(name) && c.getCustomerPassword().equals(decryptedPassword)) return true;
+        }
+        return false;
     }
 
 

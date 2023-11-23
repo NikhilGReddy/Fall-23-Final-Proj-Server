@@ -61,8 +61,16 @@ public class Server extends Observable {
             switch (message.type) {
                 case "login":
                     System.out.println("Login attempt read correctly: " + message.name + message.password);
-                    Message message1 = new Message("loggedIn", message.name, message.password);
-                    toClient.write(gson.toJson(message1));
+                    boolean x = BidLists.checkUserLogin(message.name, message.password);
+                    Message message1;
+                    if(x) {
+                        message1 = new Message("loggedIn", message.name, message.password);
+                    } else {
+                        message1 = new Message("invalidLogin", message.name, message.password);
+                    }
+
+                    toClient.println(gson.toJson(message1));
+                    toClient.flush();
                     break;
                 case "lower":
                     temp = message.input.toLowerCase();
@@ -82,4 +90,6 @@ public class Server extends Observable {
             e.printStackTrace();
         }
     }
+
+
 }

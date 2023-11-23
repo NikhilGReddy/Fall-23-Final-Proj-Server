@@ -5,6 +5,10 @@ public class Message {
     String input;
     int number;
 
+    String imgURL;
+
+    int timeLeft;
+
     String name;
     String password;
 
@@ -19,6 +23,10 @@ public class Message {
         this.type = type;
         this.name = name;
         this.password = password;
+    }
+
+    protected Message(String imgURL, int timeLeft, String name){
+        this.imgURL =imgURL; this.timeLeft = timeLeft; this.name = name;
     }
 
     protected Message(String type, String input, int number) {
