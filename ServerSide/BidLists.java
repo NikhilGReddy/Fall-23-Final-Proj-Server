@@ -15,7 +15,7 @@ public class BidLists {
     private List<Bid> bids;
     Gson gson = new Gson();
 
-    Item[] items;
+    static Item[] items;
     static Customer[] customers;
     public void readJson(){
         try {

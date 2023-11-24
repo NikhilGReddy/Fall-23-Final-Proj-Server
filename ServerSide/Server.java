@@ -75,6 +75,18 @@ public class Server extends Observable {
                 case "lower":
                     temp = message.input.toLowerCase();
                     break;
+                case "initializeLanding":
+                    String[] urls = new String[BidLists.items.length];
+                    String[] itemNames = new String[BidLists.items.length];
+                    int[] timesLeft = new int[BidLists.items.length];
+                    for(int i =0; i<BidLists.items.length; i++){
+                        urls[i] = BidLists.items[i].getImageRef();
+                        itemNames[i] = BidLists.items[i].getItemName();
+                        timesLeft[i] = BidLists.items[i].getTimerDuration();
+                    }
+                    Message message2 = new Message("landingInfo",urls,timesLeft,itemNames);
+                    toClient.println(message2);
+                    toClient.flush();
                 case "strip":
                     temp = message.input.replace(" ", "");
                     break;

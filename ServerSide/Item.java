@@ -8,7 +8,7 @@ public class Item implements Serializable {
     private String itemID;
     private String itemName;
     private String description;
-    private URL imageRef;
+    private String imageRef;
     private double startPrice;
     private double curPrice;    //min acceptable price is this +0.01
     private double minPrice;
@@ -26,7 +26,7 @@ public class Item implements Serializable {
         }
     }; */
 
-    public Item(String itemID, String itemName, String description, URL imageRef, double startPrice, double buyNowPrice, int timerDuration){
+    public Item(String itemID, String itemName, String description, String imageRef, double startPrice, double buyNowPrice, int timerDuration){
         this.itemID= itemID;
         this.itemName = itemName;
         this.description = description;
@@ -35,6 +35,13 @@ public class Item implements Serializable {
         this.minPrice = startPrice +0.01;
         this.buyNowPrice = buyNowPrice;
         this.timerDuration = timerDuration;
+    }
+
+    public int getTimerDuration(){
+        return this.timerDuration;
+    }
+    public String getImageRef(){
+        return this.imageRef;
     }
 
     public String getItemName(){
