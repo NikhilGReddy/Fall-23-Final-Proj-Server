@@ -85,7 +85,7 @@ public class Server extends Observable {
                         timesLeft[i] = BidLists.items[i].getTimerDuration();
                     }
                     Message message2 = new Message("landingInfo",urls,timesLeft,itemNames);
-                    toClient.println(message2);
+                    toClient.println(gson.toJson(message2));
                     toClient.flush();
                 case "strip":
                     temp = message.input.replace(" ", "");
