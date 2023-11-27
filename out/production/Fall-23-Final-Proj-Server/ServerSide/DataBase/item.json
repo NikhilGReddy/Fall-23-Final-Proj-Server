@@ -22,5 +22,41 @@
     "buyNowPrice" : "25.00",
     "sold" : "false",
     "timerDuration" : "20"
+  },
+  {
+    "itemID" : "0003",
+    "itemName" : "Chair",
+    "description" : "Sturdy chair",
+    "imageRef" : "https://hips.hearstapps.com/hmg-prod/images/herman-miller-eames-lounge-chair-04-1541618605-copy-1626442068.jpg?crop=1.00xw:0.575xh;0,0.300xh&resize=1200:*",
+    "startPrice" :  "12.00",
+    "curPrice" :  "12.00",
+    "minPrice" : "12.00",
+    "buyNowPrice" : "25.00",
+    "sold" : "false",
+    "timerDuration" : "20"
+  },
+  {
+    "itemID" : "0004",
+    "itemName" : "Chair",
+    "description" : "Sturdy chair",
+    "imageRef" : "https://hips.hearstapps.com/hmg-prod/images/herman-miller-eames-lounge-chair-04-1541618605-copy-1626442068.jpg?crop=1.00xw:0.575xh;0,0.300xh&resize=1200:*",
+    "startPrice" :  "12.00",
+    "curPrice" :  "12.00",
+    "minPrice" : "12.00",
+    "buyNowPrice" : "25.00",
+    "sold" : "false",
+    "timerDuration" : "20"
+  },
+  {
+    "itemID" : "0005",
+    "itemName" : "Chair",
+    "description" : "Sturdy chair",
+    "imageRef" : "https://hips.hearstapps.com/hmg-prod/images/herman-miller-eames-lounge-chair-04-1541618605-copy-1626442068.jpg?crop=1.00xw:0.575xh;0,0.300xh&resize=1200:*",
+    "startPrice" :  "12.00",
+    "curPrice" :  "12.00",
+    "minPrice" : "12.00",
+    "buyNowPrice" : "25.00",
+    "sold" : "false",
+    "timerDuration" : "20"
   }
 ]

@@ -87,6 +87,12 @@ public class Server extends Observable {
                     Message message2 = new Message("landingInfo",urls,timesLeft,itemNames);
                     toClient.println(gson.toJson(message2));
                     toClient.flush();
+                    break;
+                case "Bid":
+                    Customer c = BidLists.customerLookup(message.bidUser);
+                    Bid bid = new Bid(c,BidLists.items[message.itemNum-1], message.bidAmount);
+                    BidLists.addBid(bid);
+                    Message msg = new Message("bidPlaced")
                 case "strip":
                     temp = message.input.replace(" ", "");
                     break;

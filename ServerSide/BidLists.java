@@ -12,11 +12,12 @@ import java.util.List;
 
 public class BidLists {
 
-    private List<Bid> bids;
-    Gson gson = new Gson();
+    private static List<Bid> bids;
+    static Gson gson = new Gson();
 
     static Item[] items;
     static Customer[] customers;
+
     public void readJson(){
         try {
            items = gson.fromJson(new FileReader("ServerSide/DataBase/item.json"), Item[].class);
@@ -29,11 +30,19 @@ public class BidLists {
         }
     }
 
+    public static Customer customerLookup(String name){
+        for(Customer c : customers){
+            if(c.getCustomerName().equals(name)){
+                return c;
+            }
+        }
+        return null;
+    }
     public BidLists(){
         this.bids = new ArrayList<>();
     }
 
-    public void addBid(Bid bid){
+    public static void addBid(Bid bid){
         FileWriter fileWriter = null;
 
         try {
@@ -73,6 +82,16 @@ public class BidLists {
             if(c.getCustomerName().equals(name) && c.getCustomerPassword().equals(decryptedPassword)) return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString(){
+        String s = "";
+        for(Bid b : bids){
+            s += b.toString();
+            s+= "\n";
+        }
+        return s;
     }
 
 
