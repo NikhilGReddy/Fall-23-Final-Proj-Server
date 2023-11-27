@@ -84,11 +84,27 @@ public class BidLists {
         return false;
     }
 
-    @Override
-    public String toString(){
+    public static List<Bid> getItemBids(Item item){
+        try {
+            List<Bid> itemBids = new ArrayList<>();
+            for (Bid i : bids) {
+                if(i.itemName().equals(item.getItemName())){
+                    itemBids.add(i);
+                }
+            }
+            return itemBids;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public static String toString(Item i){
+        List<Bid> itemBids = getItemBids(i);
         String s = "";
-        for(Bid b : bids){
-            s += b.toString();
+        for(Bid b : itemBids){
+            s += b.forItemString();
             s+= "\n";
         }
         return s;

@@ -24,6 +24,10 @@ public class Bid {
         return this.item.getItemName();
     }
 
+    public String forItemString(){
+        return "Customer : " + customer.getCustomerName() +  " Amount: " + bidAmount;
+    }
+
     public String toString(){
         try {
             return "Customer : " + customer.getCustomerName() + " Item: " + item.getItemName() + " Amount: " + bidAmount;
